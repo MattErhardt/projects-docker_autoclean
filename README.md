@@ -73,23 +73,21 @@ sudo <path-to-executable>/docker-cleanup.sh
    or
    - Manually create `docker-cleanup-synology.sh` by copying the code below:
     ```bash
-     #!/bin/bash
+      #!/bin/bash
 
-    # Remove dangling images
-    echo "Removing dangling images..." >> /volume1/docker/cleanup.log
-    docker image prune -f >> /volume1/docker/cleanup.log 2>&1
+      # Remove dangling images
+      echo "Removing dangling images..." >> /volume1/docker/projects-docker_autoclean/cleanup.log
+      docker image prune -f >> /volume1/docker/projects-docker_autoclean/cleanup.log 2>&1
 
-    # Remove all unused images
-    echo "Removing unused images..." >> /volume1/docker/cleanup.log
-    docker image prune -af >> /volume1/docker/cleanup.log 2>&1
+      # Remove all unused images
+      echo "Removing unused images..." >> /volume1/docker/projects-docker_autoclean/cleanup.log
+      docker image prune -af >> /volume1/docker/projects-docker_autoclean/cleanup.log 2>&1
 
-    # Optional: remove unused volumes and networks
-    echo "Removing unused volumes and networks..." >> /volume1/docker/cleanup.log
-    docker system prune -af >> /volume1/docker/cleanup.log 2>&1
+      # Optional: remove unused volumes and networks
+      echo "Removing unused volumes and networks..." >> /volume1/docker/projects-docker_autoclean/cleanup.log
+      docker system prune -af >> /volume1/docker/projects-docker_autoclean/cleanup.log 2>&1
 
-    echo "Docker cleanup completed." >> /volume1/docker/cleanup.log
-
-
+      echo "Docker cleanup completed." >> /volume1/docker/projects-docker_autoclean/cleanup.log
     ```
 2. Make the script an executable by running
    ```bash
@@ -112,12 +110,12 @@ sudo <path-to-executable>/docker-cleanup.sh
    - Task Settings Tab:
      - In the Run command field, enter the full path to your script:
         ```bash
-        /bin/bash /volume1/docker/docker_cleanup.sh
+        /bin/bash /volume1/docker/projects-docker_autoclean/docker-cleanup-synology.sh
         ```
 5. Save the Task: 
    - Click OK to save your scheduled task.
 6. Verify Task
-   1. **Check Logs:** Ensure that your cleanup script logs output to /volume1/docker/cleanup.log, which you can monitor for any issues.
+   1. **Check Logs:** Ensure that your cleanup script logs output to /volume1/docker/projects-docker_autoclean/cleanup.log, which you can monitor for any issues.
 
    2. **Run the Task Manually:** You can manually run the task from the Task Scheduler to ensure it works correctly.
 
